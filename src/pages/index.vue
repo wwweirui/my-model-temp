@@ -71,7 +71,7 @@ const onSubmit = async (values: any) => {
   
   // 校验短信验证码
   let params = {
-    customerType: '0',
+    customerType: '2',
     imageCode: captchaCode.value,
     mobileNo: formData.value.contactPersonPhone,
     uuid: uuid.value,
@@ -177,7 +177,7 @@ const handleBeforeClose = async (action: string) => {
     } else {
       // 确认按钮的逻辑，通常需要向后端发送验证码进行验证
       const params = {
-        customerType: '0',
+        customerType: '2',
         imageCode: captchaCode.value,
         mobileNo: formData.value.contactPersonPhone,
         uuid: uuid.value
@@ -214,7 +214,7 @@ const showPicker = ref(false);
 const minDate = new Date(2000, 0, 1);
 const maxDate = new Date();
 const onConfirmEstablishmentDate = ({ selectedValues }) => {
-  products.value[productIndex.value].establishmentDate = selectedValues.join('/');
+  products.value[productIndex.value].establishmentDate = selectedValues.join('-');
   showPicker.value = false;
 };
 
@@ -323,7 +323,9 @@ const onConfirmProduct = (value: PickerConfirmEventParams) => {
   let resValue = value.selectedValues[0] as string;
   if(resValue) {
     products.value[productIndex.value].productFullName = resValue;
-    products.value[productIndex.value].productCode = filterdepartments.value.find(item => item.productName == resValue)['productCode']
+    let finditem = filterdepartments.value.find(item => item.productName == resValue)
+    products.value[productIndex.value].productCode = finditem['productCode']
+    products.value[productIndex.value].establishmentDate = finditem['establishDate']
   }
   showProductFullNamePicker.value = false;
 }
