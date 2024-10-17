@@ -5,11 +5,11 @@ import useRouteCache from '@/stores/modules/routeCache'
 import useAutoThemeSwitcher from '@/hooks/useAutoThemeSwitcher'
 
 useHead({
-  title: 'Vue3 Vant Mobile',
+  title: '德邦私募大赛',
   meta: [
     {
       name: 'description',
-      content: 'Vue + Vite H5 Starter Template',
+      content: '私募大赛',
     },
     {
       name: 'theme-color',
@@ -19,8 +19,8 @@ useHead({
   link: [
     {
       rel: 'icon',
-      type: 'image/svg+xml',
-      href: () => preferredDark.value ? '/favicon-dark.svg' : '/favicon.svg',
+      type: 'image/x-icon',
+      href: () => '/favicon.ico',
     },
   ],
 })
@@ -41,7 +41,7 @@ onMounted(() => {
 
 <template>
   <VanConfigProvider :theme="mode">
-    <NavBar />
+    <!-- <NavBar /> -->
     <router-view v-slot="{ Component, route }">
       <section class="app-wrapper">
         <keep-alive :include="keepAliveRouteNames">
@@ -49,7 +49,7 @@ onMounted(() => {
         </keep-alive>
       </section>
     </router-view>
-    <TabBar />
+    <!-- <TabBar /> -->
   </VanConfigProvider>
 </template>
 
@@ -57,6 +57,6 @@ onMounted(() => {
 .app-wrapper {
   width: 100%;
   position: relative;
-  padding: 16px;
+  /* padding: 10px; */
 }
 </style>

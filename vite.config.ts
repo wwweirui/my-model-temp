@@ -19,11 +19,18 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       host: true,
       port: 3000,
       proxy: {
-        '/api': {
-          target: '',
+        // '/api': {
+        //   target: '',
+        //   ws: false,
+        //   changeOrigin: true,
+        // },
+        '/prod-api': {
+          target: 'http://172.16.101.249:9301/prod-api',
+          // target: `http://192.168.77.136:8502`, // wenkui本地
           ws: false,
           changeOrigin: true,
-        },
+          rewrite: (path) => path.replace(`\/prod-api`, '')
+        }
       },
     },
 
